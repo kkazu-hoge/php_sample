@@ -17,7 +17,7 @@
             <p><?php echo $question; ?></p>
 
             <h3>選択肢</h3>
-            <ol class="answers" data-id="question1">
+            <ol class="answers" data-id="question3">
                 <?php foreach($answers as $key => $value): ?>
                     <li data-answer="<?php echo $key; ?>"><?php echo $value; ?></li>
                 <?php endforeach; ?>

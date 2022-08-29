@@ -1,17 +1,22 @@
 <?php
 
-$id = '1';
-$question = "HTMLは何の略称？part2";
+require __DIR__."/../lib/functions.php";
+
+$id = '3';
+
+$data = fetchById($id);
+
+$question = htmlspecialchars($data[1]);
 
 $answers = [
-  'A' => 'HyperTextMakingLanguage',
-  'B' => 'HyperTextMarkupLanguage',
-  'C' => 'HonmaniTensaitekinaMajidesugoiLanguage',
-  'D' => 'そもそも略称ではない',
+  'A' =>  htmlspecialchars($data[2]),
+  'B' =>  htmlspecialchars($data[3]),
+  'C' =>  htmlspecialchars($data[4]),
+  'D' =>  htmlspecialchars($data[5]),
 ];
 
-$collectAnswer = 'B';
+$collectAnswer = strtoupper($data[6]);
 $collectAnswerValue = $answers[$collectAnswer];
-$explanation = 'これが間違えてたら「HTMLとは？」の動画を復習お願いします！';
+$explanation = nl2br( htmlspecialchars($data[7]));
 
 include __DIR__ . '/../template/question.tpl.php';
