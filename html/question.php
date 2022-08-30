@@ -16,7 +16,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"]) && ($qNo_min <= $_GET["id"]) &
 }
 
 $data = getFormattedData(fetchById($id));
-$data = null;
+// $data = null;
 #$dataがなければ404ページを表示
 if ($data) {
   $question = $data["question"];
@@ -28,5 +28,5 @@ if ($data) {
   include __DIR__.'/../template/question.tpl.php';
 } else{
   error404();
-  // include __DIR__.'/../template/404.tpl.php';
+  include __DIR__.'/../template/404.tpl.php';
 }

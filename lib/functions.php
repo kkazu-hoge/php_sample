@@ -85,11 +85,11 @@
      // レスポンスの種類を指定する
      header('Content-Type: text/html; charset=UTF-8');
  
-     // 404ページを出力
-     loadTemplate('404');
+    //  // 404ページを出力
+    //  loadTemplate('404');
  
-     // PHPスクリプトを終了(0は正常に終了)
-     exit(0);
+    //  // PHPスクリプトを終了(0は正常に終了)
+    //  exit(0);
  }
 
 

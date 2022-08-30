@@ -11,12 +11,12 @@
 <body>
     <div id="main">
         <h1>Quiz!</h1>
-        <form action="/question.php" method="get">
-            <div>
-                <label for="id">質問番号</label>
-                <input type="text" id="question_id" name="id">
-            </div>
-            <input type="submit" value="送信">
+        <form action="question.php" method="get">
+          <div>
+            <label for="id">質問番号</label>
+            <input type="text" id="question_id" name="id">
+          </div>
+          <input type="submit" value="送信">
         </form>
         <div class="section">
             <h2>問題<?php echo $id; ?></h2>
@@ -37,7 +37,15 @@
                 <?php echo $explanation; ?>
             </p>
         </div>
-
+        <div>
+          <form action="answer.php" method="POST">
+            <label for="id">ID:</label><br>
+            <input type="text" id="id-input" name="id"><br>
+            <label for="answer">選んだ答え:</label><br>
+            <input type="text" id="answer-input" name="selectedAnswer"><br>
+            <p><input type="submit" value="送信"></p>
+          </form>
+        </div>
         <div class="section">
             <a href="./index.html">戻る</a>
         </div>
