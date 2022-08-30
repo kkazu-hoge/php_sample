@@ -108,3 +108,11 @@ div#section-correct-answer {
     /** 表示しない */
     display: none;
 }
+
+header.error_page{
+    text-align: center;
+}
+
+h2.error_404_title {
+    display: inline-block;
+}

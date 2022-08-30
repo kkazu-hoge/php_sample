@@ -1,22 +1,32 @@
 <?php
 
-require __DIR__."/../lib/functions.php";
+require_once __DIR__."/../lib/functions.php";
 
-$id = '3';
+// foreach (getallheaders() as $name => $value) {
+//   echo "$name: $value\n";
+// }
+// echo var_dump($_REQUEST);
+#送信内容のバリデーション(idがセットされている、数値である、番号が1~6の範囲である)
+$qNo_min =1;
+$qNo_max =6;
+if (isset($_GET["id"]) && is_numeric($_GET["id"]) && ($qNo_min <= $_GET["id"]) && ($_GET["id"] <= $qNo_max)) {
+  $id = escape($_GET["id"]);
+} else {
+  $id = "1";
+}
 
-$data = fetchById($id);
+$data = getFormattedData(fetchById($id));
+$data = null;
+#$dataがなければ404ページを表示
+if ($data) {
+  $question = $data["question"];
+  $answers = $data["answers"];
+  $collectAnswer = $data["collectAnswer"];
+  $collectAnswerValue = $answers[$collectAnswer];
+  $explanation = $data["explanation"];
 
-$question = htmlspecialchars($data[1]);
-
-$answers = [
-  'A' =>  htmlspecialchars($data[2]),
-  'B' =>  htmlspecialchars($data[3]),
-  'C' =>  htmlspecialchars($data[4]),
-  'D' =>  htmlspecialchars($data[5]),
-];
-
-$collectAnswer = strtoupper($data[6]);
-$collectAnswerValue = $answers[$collectAnswer];
-$explanation = nl2br( htmlspecialchars($data[7]));
-
-include __DIR__ . '/../template/question.tpl.php';
+  include __DIR__.'/../template/question.tpl.php';
+} else{
+  error404();
+  // include __DIR__.'/../template/404.tpl.php';
+}

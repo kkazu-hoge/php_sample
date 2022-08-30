@@ -51,20 +51,49 @@
 
   function getFormattedData($data){
     $formattedData = [
-      "id" => $data[0],
-      "question" => $data[1],
+      "id" => escape($data[0]),
+      "question" => escape($data[1], true),
       "answers" => [
-        "A" => $data[2],
-        "B" => $data[3],
-        "C" => $data[4],
-        "D" => $data[5],
+        "A" => escape($data[2]),
+        "B" => escape($data[3]),
+        "C" => escape($data[4]),
+        "D" => escape($data[5]),
       ],
-      "collectAnswer" => strtoupper($data[6]),
-      "explanation" => nl2br( htmlspecialchars($data[7]))
+      "collectAnswer" => escape(strtoupper($data[6])),
+      "explanation" => escape($data[7], true)
     ];
     return $formattedData;
   }
 
-function 
+  function escape($data_column, $nl2br = false){
+    
+    $escapeData = htmlspecialchars($data_column);
+
+    if ($nl2br === true){
+      $escapeData = nl2br($escapeData);
+    }
+
+    return $escapeData;
+  }
+
+#404エラーの関数
+ function error404()
+ {
+     // HTTPレスポンスのヘッダを404にする
+     header('HTTP/1.1 404 Not Found');
+ 
+     // レスポンスの種類を指定する
+     header('Content-Type: text/html; charset=UTF-8');
+ 
+     // 404ページを出力
+     loadTemplate('404');
+ 
+     // PHPスクリプトを終了(0は正常に終了)
+     exit(0);
+ }
+
+
+
+
 
 ?>
