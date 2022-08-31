@@ -40,9 +40,9 @@
         <div>
           <form action="answer.php" method="POST">
             <label for="id">ID:</label><br>
-            <input type="text" id="id-input" name="id"><br>
-            <label for="answer">選んだ答え:</label><br>
-            <input type="text" id="answer-input" name="selectedAnswer"><br>
+            <input type="text" id="id" name="id"><br>
+            <label for="selectedAnswer">選んだ答え:</label><br>
+            <input type="text" id="selectedAnswer" name="selectedAnswer"><br>
             <p><input type="submit" value="送信"></p>
           </form>
         </div>

@@ -22,7 +22,24 @@ function checkClickedAnswer(event) {
     // 親要素のolから、data-idの値を取得
     const questionId = clickedAnswerElement.closest('ol.answers').dataset.id;
     // 正しい答え(A,B,C,D)
-    const correctAnswer = correctAnswers[questionId];
+    // const correctAnswer = correctAnswers[questionId];
+
+    // formオブジェクトにデータ格納
+    const form = new FormData();
+    form.append("selectedAnswer", selectedAnswer);
+    form.append("id", );
+
+    // リクエスト送信
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "answer.php");
+    xhr.send(form);
+    //　レスポンス処理
+
+    // 正解・不正解の表示処理(レスポンス処理に含めるかも)
+
+}
+
+function displayResult(){
 
     // メッセージを入れる変数を用意
     let message;
@@ -48,3 +65,4 @@ function checkClickedAnswer(event) {
     // 答え全体を表示
     document.querySelector('div#section-correct-answer').style.display = 'block';
 }
+
